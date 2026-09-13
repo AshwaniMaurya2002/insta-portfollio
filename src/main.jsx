@@ -391,17 +391,48 @@ function SnakeGame() {
         </div>
 
         <div className="mobile-controls">
-          <button onClick={() => changeDirection("up")}>↑</button>
+          <button
+            type="button"
+            onPointerDown={(e) => {
+              e.preventDefault();
+              changeDirection("up");
+            }}
+          >
+            ↑
+          </button>
 
           <div>
-            <button onClick={() => changeDirection("left")}>←</button>
+            <button
+              type="button"
+              onPointerDown={(e) => {
+                e.preventDefault();
+                changeDirection("left");
+              }}
+            >
+              ←
+            </button>
 
-            <button onClick={() => changeDirection("down")}>↓</button>
+            <button
+              type="button"
+              onPointerDown={(e) => {
+                e.preventDefault();
+                changeDirection("down");
+              }}
+            >
+              ↓
+            </button>
 
-            <button onClick={() => changeDirection("right")}>→</button>
+            <button
+              type="button"
+              onPointerDown={(e) => {
+                e.preventDefault();
+                changeDirection("right");
+              }}
+            >
+              →
+            </button>
           </div>
         </div>
-
         <div className="game-footer">
           <span>WASD / ARROWS TO MOVE</span>
           <span>FOOD = +2 GROWTH</span>
