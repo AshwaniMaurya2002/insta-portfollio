@@ -6,20 +6,30 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
-
   background: #050505;
   color: #fff;
-
   overflow-x: hidden;
+  width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
 }
 
 main {
@@ -35,11 +45,8 @@ main {
 .background {
   position: fixed;
   inset: 0;
-
   z-index: -10;
-
   background: #050505;
-
   overflow: hidden;
 }
 
@@ -58,20 +65,15 @@ main {
 
 .orb {
   position: absolute;
-
   border-radius: 50%;
-
   filter: blur(100px);
-
   opacity: 0.25;
 }
 
 .orb-one {
   width: 450px;
   height: 450px;
-
   background: #6d28d9;
-
   top: -180px;
   left: -150px;
 }
@@ -79,9 +81,7 @@ main {
 .orb-two {
   width: 400px;
   height: 400px;
-
   background: #2563eb;
-
   top: 20%;
   right: -180px;
 }
@@ -89,9 +89,7 @@ main {
 .orb-three {
   width: 350px;
   height: 350px;
-
   background: #9333ea;
-
   bottom: -150px;
   left: 35%;
 }
@@ -102,23 +100,21 @@ main {
 
 .navbar {
   width: min(1200px, 90%);
-
-  height: 90px;
-
+  min-height: 90px;
   margin: auto;
 
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
+
+  gap: 30px;
 }
 
 .brand {
+  flex-shrink: 0;
+
   font-size: 28px;
-
   font-weight: 900;
-
   letter-spacing: -2px;
 }
 
@@ -128,16 +124,16 @@ main {
 
 .nav-right {
   display: flex;
-
+  align-items: center;
+  justify-content: flex-end;
   gap: 32px;
 }
 
 .nav-right a {
   color: #888;
-
   font-size: 13px;
-
   transition: 0.3s;
+  white-space: nowrap;
 }
 
 .nav-right a:hover {
@@ -150,45 +146,40 @@ main {
 
 .hero {
   width: min(1200px, 90%);
-
   min-height: calc(100vh - 90px);
-
   margin: auto;
 
   display: grid;
-
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(350px, 0.9fr);
 
   align-items: center;
 
-  gap: 50px;
+  gap: clamp(35px, 5vw, 70px);
 
   padding: 50px 0 100px;
 }
 
 .hero-left {
   max-width: 650px;
+  min-width: 0;
 }
 
 .availability {
   width: fit-content;
+  max-width: 100%;
 
   display: flex;
-
   align-items: center;
-
   gap: 9px;
 
   padding: 8px 14px;
 
   border: 1px solid rgba(255, 255, 255, 0.1);
-
   border-radius: 100px;
 
   background: rgba(255, 255, 255, 0.04);
 
   color: #aaa;
-
   font-size: 12px;
 
   margin-bottom: 25px;
@@ -197,29 +188,24 @@ main {
 .availability span {
   width: 7px;
   height: 7px;
+  flex-shrink: 0;
 
   border-radius: 50%;
 
   background: #4ade80;
-
   box-shadow: 0 0 12px #4ade80;
 }
 
 .hello {
   color: #999;
-
   font-size: 20px;
-
   margin-bottom: 8px;
 }
 
 h1 {
   font-size: clamp(50px, 7vw, 88px);
-
   line-height: 0.95;
-
   letter-spacing: -5px;
-
   font-weight: 850;
 }
 
@@ -227,9 +213,7 @@ h1 span {
   background: linear-gradient(90deg, #fff, #a78bfa, #60a5fa);
 
   -webkit-background-clip: text;
-
   background-clip: text;
-
   color: transparent;
 }
 
@@ -237,10 +221,11 @@ h1 span {
   margin-top: 25px;
 
   font-size: 20px;
-
   color: #a78bfa;
 
   min-height: 30px;
+
+  overflow-wrap: anywhere;
 }
 
 .role b {
@@ -255,27 +240,21 @@ h1 span {
 
 .intro {
   margin-top: 20px;
-
   max-width: 540px;
 
   color: #999;
-
   line-height: 1.8;
-
   font-size: 16px;
 }
 
 .vibe-line {
   margin-top: 18px;
-
   color: #666;
-
   font-size: 13px;
 }
 
 .vibe-line span {
   color: #a78bfa;
-
   margin-right: 8px;
 }
 
@@ -289,50 +268,45 @@ h1 span {
 
 .buttons {
   display: flex;
-
+  flex-wrap: wrap;
   gap: 14px;
-
   margin-top: 30px;
 }
 
 .main-button,
 .outline-button {
   padding: 14px 20px;
-
   border-radius: 10px;
-
   font-size: 14px;
-
   transition: 0.3s;
 }
 
 .main-button {
   background: white;
-
   color: black;
 
   display: flex;
-
   align-items: center;
-
+  justify-content: center;
   gap: 10px;
 }
 
 .main-button:hover {
   transform: translateY(-3px);
-
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
 }
 
 .outline-button {
   border: 1px solid #333;
-
   color: #ccc;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .outline-button:hover {
   border-color: #777;
-
   color: white;
 }
 
@@ -342,21 +316,17 @@ h1 span {
 
 .social-row {
   display: flex;
-
+  flex-wrap: wrap;
   gap: 25px;
-
   margin-top: 35px;
 }
 
 .social-row a {
   display: flex;
-
   align-items: center;
-
   gap: 8px;
 
   color: #777;
-
   font-size: 13px;
 
   transition: 0.3s;
@@ -378,19 +348,18 @@ h1 span {
   position: relative;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   min-height: 520px;
+
+  min-width: 0;
 }
 
 .profile-card {
   position: relative;
 
-  width: 360px;
-
+  width: min(360px, 100%);
   min-height: 460px;
 
   padding: 25px;
@@ -412,7 +381,6 @@ h1 span {
     inset 0 1px rgba(255, 255, 255, 0.08);
 
   text-align: center;
-
   overflow: hidden;
 }
 
@@ -425,11 +393,9 @@ h1 span {
   background: #7c3aed;
 
   filter: blur(100px);
-
   opacity: 0.15;
 
   top: 40px;
-
   left: 50%;
 
   transform: translateX(-50%);
@@ -437,23 +403,15 @@ h1 span {
 
 .profile-top {
   position: relative;
-
   z-index: 2;
 
   display: flex;
-
   justify-content: space-between;
 
   color: #666;
-
   font-size: 10px;
-
   letter-spacing: 1px;
 }
-
-/* =================================
-   AVATAR
-================================= */
 
 .avatar {
   position: relative;
@@ -464,9 +422,7 @@ h1 span {
   margin: 60px auto 25px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 }
 
@@ -475,7 +431,6 @@ h1 span {
   height: 135px;
 
   object-fit: cover;
-
   object-position: center;
 
   border-radius: 50%;
@@ -487,7 +442,6 @@ h1 span {
     0 0 80px rgba(139, 92, 246, 0.12);
 
   position: relative;
-
   z-index: 2;
 
   transition: 0.5s ease;
@@ -499,7 +453,6 @@ h1 span {
 
 .avatar-ring {
   position: absolute;
-
   inset: 0;
 
   border-radius: 50%;
@@ -517,7 +470,6 @@ h1 span {
 
 .profile-card h2 {
   position: relative;
-
   font-size: 28px;
 }
 
@@ -527,7 +479,6 @@ h1 span {
   margin-top: 5px;
 
   color: #777;
-
   font-size: 13px;
 }
 
@@ -539,6 +490,7 @@ h1 span {
   position: relative;
 
   width: fit-content;
+  max-width: 100%;
 
   margin: 15px auto 0;
 
@@ -551,24 +503,21 @@ h1 span {
   border: 1px solid rgba(74, 222, 128, 0.15);
 
   color: #777;
-
   font-size: 10px;
 
   display: flex;
-
   align-items: center;
-
   gap: 7px;
 }
 
 .status-pill span {
   width: 5px;
   height: 5px;
+  flex-shrink: 0;
 
   border-radius: 50%;
 
   background: #4ade80;
-
   box-shadow: 0 0 10px #4ade80;
 }
 
@@ -580,7 +529,6 @@ h1 span {
   position: relative;
 
   display: grid;
-
   grid-template-columns: repeat(3, 1fr);
 
   margin-top: 45px;
@@ -593,9 +541,7 @@ h1 span {
 
 .mini-stats div {
   display: flex;
-
   flex-direction: column;
-
   gap: 5px;
 }
 
@@ -605,11 +551,9 @@ h1 span {
 
 .mini-stats span {
   color: #666;
-
   font-size: 10px;
 
   text-transform: uppercase;
-
   letter-spacing: 1px;
 }
 
@@ -621,20 +565,23 @@ h1 span {
   position: absolute;
 
   bottom: 25px;
-
   left: 25px;
-
   right: 25px;
 
   display: flex;
-
+  align-items: center;
   justify-content: space-between;
+
+  gap: 20px;
 
   color: #555;
 
   font-size: 9px;
-
   letter-spacing: 1px;
+}
+
+.card-footer span {
+  white-space: nowrap;
 }
 
 /* =================================
@@ -655,41 +602,36 @@ h1 span {
   backdrop-filter: blur(10px);
 
   font-size: 12px;
-
   color: #ccc;
 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+  white-space: nowrap;
+
+  z-index: 5;
 }
 
 .tag-one {
   top: 90px;
-
   left: 0;
-
   animation: float 4s ease-in-out infinite;
 }
 
 .tag-two {
   top: 240px;
-
   right: -20px;
-
   animation: float 5s ease-in-out infinite;
 }
 
 .tag-three {
   bottom: 70px;
-
   left: 10px;
-
   animation: float 4.5s ease-in-out infinite;
 }
 
 .tag-four {
   right: -5px;
-
   bottom: 80px;
-
   animation: float 5.5s ease-in-out infinite;
 }
 
@@ -707,23 +649,18 @@ h1 span {
 .skills,
 .connect {
   width: min(1000px, 90%);
-
   margin: auto;
-
   padding: 120px 0;
 }
 
 .section-label {
   display: flex;
-
   align-items: center;
-
   gap: 12px;
 
   color: #777;
 
   font-size: 11px;
-
   letter-spacing: 2px;
 }
 
@@ -740,7 +677,6 @@ h1 span {
   font-size: clamp(40px, 6vw, 70px);
 
   line-height: 1;
-
   letter-spacing: -4px;
 }
 
@@ -781,7 +717,6 @@ h1 span {
   color: #8b5cf6;
 
   font-size: 35px;
-
   line-height: 0;
 }
 
@@ -801,7 +736,6 @@ h1 span {
 
 .skill-cloud {
   display: flex;
-
   flex-wrap: wrap;
 
   gap: 12px;
@@ -837,6 +771,7 @@ h1 span {
   margin-top: 35px;
 
   display: flex;
+  flex-wrap: wrap;
 
   gap: 8px;
 
@@ -847,7 +782,6 @@ h1 span {
 
 .stack-caption strong {
   color: #777;
-
   font-weight: 500;
 }
 
@@ -857,7 +791,6 @@ h1 span {
 
 .vibe-section {
   width: min(1000px, 90%);
-
   margin: auto;
 
   padding: 80px 0;
@@ -883,7 +816,6 @@ h1 span {
 
 .vibe-card:hover {
   transform: translateY(-5px);
-
   border-color: #292929;
 }
 
@@ -891,7 +823,6 @@ h1 span {
   color: #666;
 
   font-size: 10px;
-
   letter-spacing: 2px;
 }
 
@@ -901,7 +832,6 @@ h1 span {
   font-size: clamp(40px, 6vw, 70px);
 
   line-height: 1;
-
   letter-spacing: -4px;
 }
 
@@ -939,9 +869,7 @@ h1 span {
   height: 40px;
 
   display: flex;
-
   align-items: center;
-
   gap: 7px;
 
   padding: 0 15px;
@@ -969,6 +897,10 @@ h1 span {
   color: #444;
 
   font-family: monospace;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .terminal-body {
@@ -979,10 +911,14 @@ h1 span {
   font-size: 13px;
 
   line-height: 2;
+
+  overflow-x: auto;
 }
 
 .terminal-body p {
   color: #777;
+
+  white-space: nowrap;
 }
 
 .terminal-body p span {
@@ -1015,7 +951,6 @@ h1 span {
   display: inline-flex;
 
   align-items: center;
-
   gap: 15px;
 
   margin-top: 35px;
@@ -1033,245 +968,8 @@ h1 span {
   border-color: white;
 }
 
-.big-socials {
-  display: flex;
-
-  gap: 35px;
-
-  margin-top: 70px;
-
-  padding-top: 30px;
-
-  border-top: 1px solid #222;
-}
-
-.big-socials a {
-  color: #888;
-
-  transition: 0.3s;
-}
-
-.big-socials a:hover {
-  color: white;
-
-  transform: translateY(-3px);
-}
-
-.big-socials span {
-  color: #8b5cf6;
-}
-
 /* =================================
-   FOOTER
-================================= */
-
-footer {
-  width: min(1200px, 90%);
-
-  margin: auto;
-
-  padding: 30px 0 45px;
-
-  border-top: 1px solid #181818;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  color: #444;
-
-  font-size: 10px;
-
-  letter-spacing: 1px;
-}
-
-/* =================================
-   MOBILE
-================================= */
-
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
-
-    text-align: center;
-  }
-
-  .hero-left {
-    margin: auto;
-  }
-
-  .availability {
-    margin-left: auto;
-
-    margin-right: auto;
-  }
-
-  .intro {
-    margin-left: auto;
-
-    margin-right: auto;
-  }
-
-  .buttons,
-  .social-row {
-    justify-content: center;
-  }
-
-  .profile-area {
-    min-height: 520px;
-  }
-}
-
-@media (max-width: 600px) {
-  .navbar {
-    height: 75px;
-  }
-
-  .nav-right {
-    gap: 16px;
-  }
-
-  .nav-right a {
-    font-size: 11px;
-  }
-
-  .hero {
-    padding-top: 30px;
-  }
-
-  h1 {
-    font-size: 52px;
-
-    letter-spacing: -3px;
-  }
-
-  .hello {
-    font-size: 17px;
-  }
-
-  .intro {
-    font-size: 14px;
-  }
-
-  .buttons {
-    flex-direction: column;
-
-    align-items: center;
-  }
-
-  .main-button,
-  .outline-button {
-    width: 190px;
-
-    justify-content: center;
-
-    text-align: center;
-  }
-
-  .social-row {
-    flex-wrap: wrap;
-  }
-
-  .profile-card {
-    width: 100%;
-
-    max-width: 340px;
-  }
-
-  .profile-area {
-    min-height: 500px;
-  }
-
-  .avatar {
-    width: 130px;
-    height: 130px;
-
-    margin-top: 45px;
-  }
-
-  .avatar img {
-    width: 110px;
-    height: 110px;
-  }
-
-  .floating-tag {
-    font-size: 10px;
-
-    padding: 8px 11px;
-  }
-
-  .tag-one {
-    left: 0;
-  }
-
-  .tag-two {
-    right: 0;
-  }
-
-  .tag-three {
-    left: 0;
-  }
-
-  .tag-four {
-    right: 0;
-
-    bottom: 30px;
-  }
-
-  .about,
-  .skills,
-  .connect {
-    padding: 80px 0;
-  }
-
-  .about h2,
-  .connect h2 {
-    font-size: 42px;
-
-    letter-spacing: -2px;
-  }
-
-  .vibe-section {
-    padding: 50px 0;
-  }
-
-  .vibe-card {
-    padding: 30px 22px;
-  }
-
-  .vibe-card h2 {
-    font-size: 42px;
-
-    letter-spacing: -2px;
-  }
-
-  .stack-caption {
-    flex-direction: column;
-  }
-
-  .terminal-body {
-    font-size: 11px;
-
-    overflow-x: auto;
-  }
-
-  .big-socials {
-    flex-direction: column;
-
-    gap: 20px;
-  }
-
-  footer {
-    flex-direction: column;
-
-    gap: 12px;
-
-    text-align: center;
-  }
-}
-
-/* =================================
-   CONTACT FORM
+   CONTACT HEADER
 ================================= */
 
 .contact-header {
@@ -1280,7 +978,6 @@ footer {
   display: flex;
 
   align-items: flex-end;
-
   justify-content: space-between;
 
   gap: 30px;
@@ -1314,7 +1011,6 @@ footer {
   display: flex;
 
   align-items: center;
-
   gap: 8px;
 
   padding: 9px 14px;
@@ -1326,6 +1022,8 @@ footer {
   color: #666;
 
   font-size: 11px;
+
+  white-space: nowrap;
 }
 
 .contact-badge span {
@@ -1339,7 +1037,9 @@ footer {
   box-shadow: 0 0 10px #4ade80;
 }
 
-/* FORM */
+/* =================================
+   FORM
+================================= */
 
 .contact-form {
   margin-top: 55px;
@@ -1420,13 +1120,14 @@ footer {
   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08);
 }
 
-/* SEND BUTTON */
+/* =================================
+   SEND BUTTON
+================================= */
 
 .send-button {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 12px;
@@ -1464,7 +1165,39 @@ footer {
   font-size: 17px;
 }
 
-/* BOTTOM */
+/* =================================
+   SOCIALS
+================================= */
+
+.big-socials {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 35px;
+
+  margin-top: 70px;
+
+  padding-top: 30px;
+
+  border-top: 1px solid #222;
+}
+
+.big-socials a {
+  color: #888;
+
+  transition: 0.3s;
+}
+
+.big-socials a:hover {
+  color: white;
+
+  transform: translateY(-3px);
+}
+
+.big-socials span {
+  color: #8b5cf6;
+}
 
 .contact-bottom {
   margin-top: 30px;
@@ -1480,85 +1213,83 @@ footer {
 
 .contact-bottom > span {
   color: #444;
-
   font-size: 11px;
 }
 
 .contact-bottom .big-socials {
   margin-top: 0;
-
   padding-top: 0;
-
   border-top: none;
-
   gap: 25px;
 }
 
-/* MOBILE */
+/* =================================
+   FOOTER
+================================= */
 
-@media (max-width: 700px) {
-  .contact-header {
-    flex-direction: column;
+footer {
+  width: min(1200px, 90%);
 
-    align-items: flex-start;
-  }
+  margin: auto;
 
-  .contact-header h2 {
-    font-size: 42px;
+  padding: 30px 0 45px;
 
-    letter-spacing: -2px;
-  }
+  border-top: 1px solid #181818;
 
-  .form-row {
-    grid-template-columns: 1fr;
+  display: flex;
 
-    gap: 0;
-  }
+  justify-content: space-between;
 
-  .contact-form {
-    padding: 20px;
-  }
+  gap: 20px;
 
-  .contact-bottom {
-    flex-direction: column;
+  color: #444;
 
-    align-items: flex-start;
-  }
+  font-size: 10px;
 
-  .contact-bottom .big-socials {
-    flex-direction: row;
-
-    flex-wrap: wrap;
-  }
+  letter-spacing: 1px;
 }
 
-/* ================================
-   SNAKE GAME / PLAYGROUND
-================================ */
+/* =================================
+   SNAKE GAME
+================================= */
 
 .game-section {
-  padding: 120px 7vw;
+  width: min(1200px, 90%);
+
+  margin: auto;
+
+  padding: 120px 0;
+
   position: relative;
 }
 
 .game-header {
   display: flex;
+
   justify-content: space-between;
+
   align-items: flex-end;
+
   gap: 40px;
+
   margin-bottom: 45px;
 }
 
 .game-small {
   font-size: 12px;
+
   letter-spacing: 3px;
+
   opacity: 0.5;
 }
 
 .game-header h2 {
   font-size: clamp(42px, 7vw, 90px);
+
   line-height: 0.9;
+
   margin: 15px 0;
+
   letter-spacing: -4px;
 }
 
@@ -1568,24 +1299,31 @@ footer {
 
 .game-header p {
   opacity: 0.55;
+
   font-size: 16px;
 }
 
 .game-score {
   display: flex;
+
   gap: 45px;
+
   flex-shrink: 0;
 }
 
 .game-score div {
   display: flex;
+
   flex-direction: column;
+
   gap: 6px;
 }
 
 .game-score span {
   font-size: 10px;
+
   letter-spacing: 2px;
+
   opacity: 0.4;
 }
 
@@ -1594,21 +1332,27 @@ footer {
 }
 
 .snake-game {
-  max-width: 700px;
+  width: min(100%, 880px);
+
   margin: 0 auto;
-  padding: 25px;
+
+  padding: 30px;
+
   border: 1px solid rgba(255, 255, 255, 0.1);
+
   border-radius: 28px;
+
   background: rgba(255, 255, 255, 0.025);
+
   backdrop-filter: blur(20px);
+
   box-shadow:
     0 30px 100px rgba(0, 0, 0, 0.4),
     inset 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .game-screen {
-  width: 100%;
-  max-width: 400px;
+  width: min(100%, 550px);
   aspect-ratio: 1;
   margin: auto;
   position: relative;
@@ -1625,129 +1369,896 @@ footer {
 
 .game-overlay {
   position: absolute;
+
   inset: 0;
+
   background: rgba(0, 0, 0, 0.72);
+
   backdrop-filter: blur(8px);
+
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
+
   align-items: center;
+
   text-align: center;
+
   padding: 20px;
 }
 
 .game-icon {
-  font-size: 42px;
+  font-size: 48px;
+
   margin-bottom: 10px;
 }
 
 .game-overlay h3 {
-  font-size: 26px;
+  font-size: 28px;
+
   margin: 5px 0 10px;
-  letter-spacing: 2px;
+
+  letter-spacing: 3px;
 }
 
 .game-overlay p {
   font-size: 13px;
+
+  line-height: 1.7;
+
   opacity: 0.55;
+
   margin-bottom: 22px;
 }
 
 .game-over-text {
-  font-size: 26px;
+  font-size: 32px;
+
   font-weight: 800;
-  letter-spacing: 3px;
+
+  letter-spacing: 4px;
 }
 
 .game-button {
   border: 0;
-  padding: 13px 22px;
+
+  padding: 14px 28px;
+
   border-radius: 100px;
+
   background: white;
+
   color: black;
+
   font-weight: 700;
+
   cursor: pointer;
+
   transition: 0.25s ease;
 }
 
 .game-button:hover {
   transform: translateY(-3px);
+
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
 }
 
 .mobile-controls {
   display: none;
-  margin-top: 20px;
+  margin-top: 18px;
   text-align: center;
 }
 
 .mobile-controls > div {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .mobile-controls button {
-  width: 48px;
-  height: 42px;
-  margin: 4px;
+  width: 52px;
+  height: 46px;
+  margin: 3px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.05);
   color: white;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 20px;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-controls button:active {
   transform: scale(0.92);
 }
 
+.mobile-controls button:active {
+  transform: scale(0.9);
+
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .game-footer {
   display: flex;
+
   justify-content: space-between;
+
   gap: 20px;
+
   margin-top: 20px;
+
   font-size: 9px;
+
   letter-spacing: 2px;
+
   opacity: 0.35;
 }
 
-/* ================================
-   MOBILE
-================================ */
+/* =================================
+   TABLET
+================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
+  .hero {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+
+    padding-top: 70px;
+
+    text-align: center;
+  }
+
+  .hero-left {
+    margin: auto;
+  }
+
+  .availability {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .intro {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons,
+  .social-row {
+    justify-content: center;
+  }
+
+  .profile-area {
+    min-height: 520px;
+
+    margin-top: 20px;
+  }
+
+  .profile-card {
+    width: 360px;
+  }
+
   .game-section {
-    padding: 80px 5vw;
+    width: 90%;
+  }
+}
+
+/* =================================
+   TABLET / SMALL LAPTOP
+================================= */
+
+@media (max-width: 800px) {
+  .navbar {
+    width: 92%;
+  }
+
+  .nav-right {
+    gap: 20px;
+  }
+
+  .hero {
+    width: 92%;
   }
 
   .game-header {
-    flex-direction: column;
     align-items: flex-start;
-    gap: 25px;
-  }
-
-  .game-header h2 {
-    letter-spacing: -2px;
   }
 
   .game-score {
     gap: 30px;
   }
 
-  .snake-game {
-    padding: 15px;
+  .contact-header {
+    align-items: flex-start;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-bottom {
+    align-items: flex-start;
+  }
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+  .navbar {
+    width: 92%;
+
+    min-height: 70px;
+
+    gap: 15px;
+  }
+
+  .brand {
+    font-size: 24px;
+  }
+
+  .nav-right {
+    gap: 12px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .nav-right::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-right a {
+    font-size: 10px;
+  }
+
+  /* HERO */
+
+  .hero {
+    width: 92%;
+
+    padding: 35px 0 80px;
+
+    gap: 35px;
+  }
+
+  .availability {
+    font-size: 10px;
+
+    padding: 7px 11px;
+
+    margin-bottom: 20px;
+  }
+
+  .hello {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: clamp(43px, 12vw, 58px);
+
+    letter-spacing: -3px;
+  }
+
+  .role {
+    font-size: 17px;
+
+    min-height: 26px;
+  }
+
+  .intro {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .vibe-line {
+    font-size: 12px;
+  }
+
+  .buttons {
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+  }
+
+  .main-button,
+  .outline-button {
+    width: min(220px, 100%);
+
+    min-height: 48px;
+
+    justify-content: center;
+  }
+
+  .social-row {
+    gap: 18px;
+
+    margin-top: 28px;
+  }
+
+  .social-row a {
+    font-size: 11px;
+  }
+
+  /* PROFILE */
+
+  .profile-area {
+    width: 100%;
+
+    min-height: 490px;
+
+    padding: 0 5px;
+  }
+
+  .profile-card {
+    width: min(100%, 330px);
+
+    min-height: 450px;
+
+    padding: 22px;
+
+    border-radius: 25px;
+  }
+
+  .avatar {
+    width: 125px;
+    height: 125px;
+
+    margin-top: 48px;
+
+    margin-bottom: 20px;
+  }
+
+  .avatar img {
+    width: 105px;
+    height: 105px;
+  }
+
+  .profile-card h2 {
+    font-size: 25px;
+  }
+
+  .profile-card > p {
+    font-size: 12px;
+  }
+
+  .status-pill {
+    font-size: 9px;
+
+    padding: 7px 10px;
+  }
+
+  .mini-stats {
+    margin-top: 38px;
+
+    padding-top: 20px;
+    padding-bottom: 25px;
+  }
+
+  .mini-stats strong {
+    font-size: 18px;
+  }
+
+  .mini-stats span {
+    font-size: 8px;
+  }
+
+  .card-footer {
+    left: 22px;
+    right: 22px;
+
+    bottom: 20px;
+
+    gap: 10px;
+
+    font-size: 8px;
+  }
+
+  .floating-tag {
+    padding: 7px 10px;
+
+    font-size: 9px;
+
+    border-radius: 9px;
+  }
+
+  .tag-one {
+    top: 70px;
+    left: 0;
+  }
+
+  .tag-two {
+    top: 210px;
+    right: 0;
+  }
+
+  .tag-three {
+    bottom: 65px;
+    left: 0;
+  }
+
+  .tag-four {
+    bottom: 45px;
+    right: 0;
+  }
+
+  /* SECTIONS */
+
+  .about,
+  .skills,
+  .connect {
+    width: 90%;
+
+    padding: 80px 0;
+  }
+
+  .section-label {
+    font-size: 9px;
+
+    letter-spacing: 1.7px;
+  }
+
+  .about-content {
+    margin-top: 35px;
+  }
+
+  .about h2,
+  .connect h2 {
+    font-size: clamp(38px, 11vw, 48px);
+
+    letter-spacing: -2.5px;
+  }
+
+  .about-content p {
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    margin-top: 23px;
+  }
+
+  .quote-box {
+    margin-top: 35px;
+
+    padding: 20px;
+  }
+
+  .quote-box p {
+    font-size: 15px !important;
+  }
+
+  /* SKILLS */
+
+  .skill-cloud {
+    gap: 8px;
+
+    margin-top: 30px;
+  }
+
+  .skill-cloud span {
+    padding: 10px 13px;
+
+    font-size: 11px;
+  }
+
+  .stack-caption {
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-top: 25px;
+
+    font-size: 11px;
+  }
+
+  /* VIBE */
+
+  .vibe-section {
+    width: 90%;
+
+    padding: 50px 0;
+  }
+
+  .vibe-card {
+    padding: 28px 20px;
+
     border-radius: 20px;
+  }
+
+  .vibe-small {
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .vibe-card h2 {
+    font-size: clamp(38px, 11vw, 48px);
+
+    letter-spacing: -2.5px;
+
+    margin-top: 20px;
+  }
+
+  .vibe-card > p {
+    font-size: 13px;
+
+    margin-top: 20px;
+  }
+
+  .terminal {
+    margin-top: 30px;
+  }
+
+  .terminal-top {
+    padding: 0 12px;
+  }
+
+  .terminal-top small {
+    font-size: 9px;
+
+    margin-left: 6px;
+  }
+
+  .terminal-body {
+    padding: 18px;
+
+    font-size: 10px;
+  }
+
+  /* SNAKE */
+
+  .game-section {
+    width: 92%;
+
+    padding: 80px 0;
+  }
+
+  .game-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+  }
+
+  .game-small {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .game-header h2 {
+    font-size: clamp(45px, 14vw, 65px);
+
+    letter-spacing: -3px;
+
+    margin: 12px 0;
+  }
+
+  .game-header p {
+    font-size: 13px;
+
+    line-height: 1.6;
+  }
+
+  .game-score {
+    gap: 30px;
+  }
+
+  .game-score span {
+    font-size: 8px;
+  }
+
+  .game-score strong {
+    font-size: 24px;
+  }
+
+  .snake-game {
+    width: 100%;
+
+    padding: 12px;
+
+    border-radius: 20px;
+  }
+
+  .game-screen {
+    width: 100%;
+
+    border-radius: 14px;
+  }
+
+  .game-icon {
+    font-size: 38px;
+  }
+
+  .game-overlay h3 {
+    font-size: 22px;
+  }
+
+  .game-overlay p {
+    font-size: 11px;
+
+    margin-bottom: 18px;
+  }
+
+  .game-over-text {
+    font-size: 24px;
+  }
+
+  .game-button {
+    padding: 12px 20px;
+
+    font-size: 12px;
   }
 
   .mobile-controls {
     display: block;
   }
 
+  .mobile-controls button {
+    width: 48px;
+    height: 44px;
+
+    font-size: 18px;
+  }
+
   .game-footer {
     flex-direction: column;
-    text-align: center;
+
     align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 8px;
+
+    font-size: 7px;
+
+    letter-spacing: 1.2px;
+  }
+
+  /* CONTACT */
+
+  .contact-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-top: 35px;
+  }
+
+  .contact-header h2 {
+    font-size: clamp(38px, 11vw, 48px);
+
+    letter-spacing: -2.5px;
+  }
+
+  .contact-header p {
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    margin-top: 20px;
+  }
+
+  .contact-badge {
+    font-size: 9px;
+  }
+
+  .contact-form {
+    margin-top: 35px;
+
+    padding: 18px;
+
+    border-radius: 18px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  .input-group {
+    margin-bottom: 18px;
+  }
+
+  .input-group label {
+    font-size: 9px;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    padding: 13px;
+
+    font-size: 13px;
+  }
+
+  .send-button {
+    min-height: 48px;
+
+    font-size: 13px;
+  }
+
+  .contact-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 25px;
+
+    margin-top: 25px;
+  }
+
+  .contact-bottom .big-socials {
+    display: flex;
+
+    flex-direction: row;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    width: 100%;
+  }
+
+  .big-socials a {
+    font-size: 12px;
+  }
+
+  /* FOOTER */
+
+  footer {
+    width: 90%;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 10px;
+
+    padding: 25px 0 35px;
+
+    font-size: 8px;
+  }
+}
+
+/* =================================
+   VERY SMALL PHONES
+================================= */
+
+@media (max-width: 380px) {
+  .navbar {
+    width: 94%;
+  }
+
+  .brand {
+    font-size: 21px;
+  }
+
+  .nav-right {
+    gap: 9px;
+  }
+
+  .nav-right a {
+    font-size: 9px;
+  }
+
+  .hero {
+    width: 94%;
+  }
+
+  h1 {
+    font-size: 42px;
+
+    letter-spacing: -2.5px;
+  }
+
+  .profile-card {
+    max-width: 300px;
+
+    min-height: 430px;
+  }
+
+  .profile-area {
+    min-height: 460px;
+  }
+
+  .avatar {
+    margin-top: 40px;
+  }
+
+  .card-footer {
+    left: 18px;
+    right: 18px;
+
+    font-size: 7px;
+
+    gap: 6px;
+  }
+
+  .floating-tag {
+    font-size: 8px;
+
+    padding: 6px 8px;
+  }
+
+  .tag-one {
+    left: -3px;
+  }
+
+  .tag-two {
+    right: -3px;
+  }
+
+  .tag-three {
+    left: -3px;
+  }
+
+  .tag-four {
+    right: -3px;
+  }
+
+  .game-section {
+    width: 94%;
+  }
+
+  .snake-game {
+    padding: 9px;
+  }
+
+  .mobile-controls button {
+    width: 44px;
+    height: 40px;
+  }
+}
+
+/* =================================
+   LANDSCAPE PHONES
+================================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+
+    padding-top: 50px;
+  }
+
+  .profile-area {
+    min-height: 450px;
+  }
+
+  .profile-card {
+    transform: scale(0.85);
+  }
+}
+
+/* =================================
+   TOUCH DEVICES
+================================= */
+
+@media (hover: none) {
+  .main-button:hover,
+  .game-button:hover,
+  .send-button:hover,
+  .vibe-card:hover {
+    transform: none;
   }
 }

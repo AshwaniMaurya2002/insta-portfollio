@@ -18,7 +18,6 @@ function SnakeGame() {
 
   const gameRef = useRef(null);
 
-  // Larger game board
   const GRID = 40;
   const CELL = 20;
   const CANVAS_SIZE = GRID * CELL;
@@ -36,7 +35,6 @@ function SnakeGame() {
         y: 15,
       },
 
-      // Extra blocks to add to snake
       growth: 0,
 
       direction: {
@@ -52,10 +50,6 @@ function SnakeGame() {
       running: true,
     };
   };
-
-  /* ================================
-     CREATE FOOD
-  ================================= */
 
   const createFood = (snake) => {
     let food;
@@ -84,7 +78,6 @@ function SnakeGame() {
 
       const key = e.key.toLowerCase();
 
-      // UP
       if ((key === "arrowup" || key === "w") && game.direction.y !== 1) {
         game.nextDirection = {
           x: 0,
@@ -92,7 +85,6 @@ function SnakeGame() {
         };
       }
 
-      // DOWN
       if ((key === "arrowdown" || key === "s") && game.direction.y !== -1) {
         game.nextDirection = {
           x: 0,
@@ -100,7 +92,6 @@ function SnakeGame() {
         };
       }
 
-      // LEFT
       if ((key === "arrowleft" || key === "a") && game.direction.x !== 1) {
         game.nextDirection = {
           x: -1,
@@ -108,7 +99,6 @@ function SnakeGame() {
         };
       }
 
-      // RIGHT
       if ((key === "arrowright" || key === "d") && game.direction.x !== -1) {
         game.nextDirection = {
           x: 1,
@@ -148,46 +138,33 @@ function SnakeGame() {
 
       if (!game) return;
 
-      /* Background */
-
       ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
       ctx.fillStyle = "#080808";
-
       ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
       /* Grid */
 
       ctx.strokeStyle = "rgba(255,255,255,0.035)";
-
       ctx.lineWidth = 1;
 
       for (let i = 0; i <= GRID; i++) {
         ctx.beginPath();
-
         ctx.moveTo(i * CELL, 0);
-
         ctx.lineTo(i * CELL, CANVAS_SIZE);
-
         ctx.stroke();
 
         ctx.beginPath();
-
         ctx.moveTo(0, i * CELL);
-
         ctx.lineTo(CANVAS_SIZE, i * CELL);
-
         ctx.stroke();
       }
 
       /* Food */
 
       ctx.font = "18px Arial";
-
       ctx.textAlign = "center";
-
       ctx.textBaseline = "middle";
-
       ctx.fillStyle = "#ffffff";
 
       ctx.fillText(
@@ -233,11 +210,7 @@ function SnakeGame() {
 
       if (!game || !game.running) return;
 
-      /* Apply direction */
-
       game.direction = game.nextDirection;
-
-      /* New head */
 
       const head = {
         ...game.snake[0],
@@ -271,8 +244,6 @@ function SnakeGame() {
         return;
       }
 
-      /* Add new head */
-
       game.snake.unshift(head);
 
       /* Food collision */
@@ -282,18 +253,11 @@ function SnakeGame() {
 
         setScore(newScore);
 
-        /* High score */
-
         if (newScore > highScore) {
           setHighScore(newScore);
 
           localStorage.setItem("snakeHighScore", newScore.toString());
         }
-
-        /*
-          Grow by 2 blocks
-          every time food is eaten
-        */
 
         game.growth += 2;
 
@@ -390,12 +354,8 @@ function SnakeGame() {
       </div>
 
       <div className="snake-game">
-        {/* GAME SCREEN */}
-
         <div className="game-screen">
           <canvas ref={canvasRef} width={CANVAS_SIZE} height={CANVAS_SIZE} />
-
-          {/* START / GAME OVER */}
 
           {!gameStarted && (
             <div className="game-overlay">
@@ -430,8 +390,6 @@ function SnakeGame() {
           )}
         </div>
 
-        {/* MOBILE CONTROLS */}
-
         <div className="mobile-controls">
           <button onClick={() => changeDirection("up")}>↑</button>
 
@@ -444,13 +402,9 @@ function SnakeGame() {
           </div>
         </div>
 
-        {/* GAME FOOTER */}
-
         <div className="game-footer">
           <span>WASD / ARROWS TO MOVE</span>
-
           <span>FOOD = +2 GROWTH</span>
-
           <span>HIGH SCORE SAVED LOCALLY</span>
         </div>
       </div>
@@ -472,14 +426,8 @@ function App() {
   ];
 
   const [roleIndex, setRoleIndex] = useState(0);
-
   const [displayText, setDisplayText] = useState("");
-
   const [deleting, setDeleting] = useState(false);
-
-  /* ================================
-     TYPING ANIMATION
-  ================================= */
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
@@ -510,23 +458,12 @@ function App() {
 
   return (
     <main>
-      {/* ================================
-          BACKGROUND
-      ================================= */}
-
       <div className="background">
         <div className="orb orb-one"></div>
-
         <div className="orb orb-two"></div>
-
         <div className="orb orb-three"></div>
-
         <div className="grid"></div>
       </div>
-
-      {/* ================================
-          NAVBAR
-      ================================= */}
 
       <nav className="navbar">
         <a href="#home" className="brand">
@@ -535,18 +472,11 @@ function App() {
 
         <div className="nav-right">
           <a href="#about">About</a>
-
           <a href="#stack">Stack</a>
-
           <a href="#playground">Play</a>
-
           <a href="#connect">Connect</a>
         </div>
       </nav>
-
-      {/* ================================
-          HERO
-      ================================= */}
 
       <section className="hero" id="home">
         <div className="hero-left">
@@ -565,7 +495,6 @@ function App() {
 
           <div className="role">
             <span>{displayText}</span>
-
             <b>|</b>
           </div>
 
@@ -616,15 +545,12 @@ function App() {
           </div>
         </div>
 
-        {/* PROFILE */}
-
         <div className="profile-area">
           <div className="profile-card">
             <div className="card-glow"></div>
 
             <div className="profile-top">
               <span>BUILD MODE</span>
-
               <span>2026</span>
             </div>
 
@@ -646,26 +572,22 @@ function App() {
             <div className="mini-stats">
               <div>
                 <strong>∞</strong>
-
                 <span>Ideas</span>
               </div>
 
               <div>
                 <strong>24</strong>
-
                 <span>Years</span>
               </div>
 
               <div>
                 <strong>01</strong>
-
                 <span>Mission</span>
               </div>
             </div>
 
             <div className="card-footer">
               <span>INDIA 🇮🇳</span>
-
               <span>⌁ VIBE CODER</span>
             </div>
           </div>
@@ -679,10 +601,6 @@ function App() {
           <div className="floating-tag tag-four">✦ Ship it</div>
         </div>
       </section>
-
-      {/* ================================
-          ABOUT
-      ================================= */}
 
       <section className="about" id="about">
         <div className="section-label">
@@ -721,10 +639,6 @@ function App() {
         </div>
       </section>
 
-      {/* ================================
-          DIGITAL WEAPONS
-      ================================= */}
-
       <section className="skills" id="stack">
         <div className="section-label">
           <span>02</span>
@@ -733,46 +647,27 @@ function App() {
 
         <div className="skill-cloud">
           <span>Java</span>
-
           <span>Spring Boot</span>
-
           <span>React</span>
-
           <span>JavaScript</span>
-
           <span>HTML</span>
-
           <span>CSS</span>
-
           <span>MySQL</span>
-
           <span>Hibernate</span>
-
           <span>JPA</span>
-
           <span>REST APIs</span>
-
           <span>Git</span>
-
           <span>GitHub</span>
-
           <span>Postman</span>
-
           <span>DSA</span>
-
           <span>OOP</span>
         </div>
 
         <div className="stack-caption">
           <span>Currently learning →</span>
-
           <strong>Spring Boot. React. Building. Shipping.</strong>
         </div>
       </section>
-
-      {/* ================================
-          VIBE SECTION
-      ================================= */}
 
       <section className="vibe-section">
         <div className="vibe-card">
@@ -791,11 +686,8 @@ function App() {
           <div className="terminal">
             <div className="terminal-top">
               <span>●</span>
-
               <span>●</span>
-
               <span>●</span>
-
               <small>ashwani@dev ~</small>
             </div>
 
@@ -816,15 +708,7 @@ function App() {
         </div>
       </section>
 
-      {/* ================================
-          SNAKE GAME
-      ================================= */}
-
       <SnakeGame />
-
-      {/* ================================
-          CONTACT
-      ================================= */}
 
       <section className="connect" id="connect">
         <div className="section-label">
@@ -851,8 +735,6 @@ function App() {
             Open to messages
           </div>
         </div>
-
-        {/* W3FORMS */}
 
         <form
           action="https://api.web3forms.com/submit"
@@ -948,24 +830,14 @@ function App() {
         </div>
       </section>
 
-      {/* ================================
-          FOOTER
-      ================================= */}
-
       <footer>
         <span>ASHWANI KUMAR MAURYA</span>
-
         <span>BUILT WITH REACT ⚡ & GOOD VIBES</span>
-
         <span>© 2026</span>
       </footer>
     </main>
   );
 }
-
-/* ================================
-   RENDER
-================================ */
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
