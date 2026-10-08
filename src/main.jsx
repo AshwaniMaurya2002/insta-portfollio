@@ -52,6 +52,7 @@ function SnakeGame() {
   };
 
   const createFood = (snake) => {
+     
     let food;
 
     do {
@@ -775,7 +776,7 @@ function App() {
           <input
             type="hidden"
             name="access_key"
-            value={import.meta.env.VITE_W3FORMS_ACCESS_KEY}
+            value="cf68d4c1-7fad-406f-8e6c-319f1166e12d"
           />
 
           <input
